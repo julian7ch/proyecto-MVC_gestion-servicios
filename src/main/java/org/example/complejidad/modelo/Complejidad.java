@@ -1,21 +1,24 @@
-package org.example.modelo;
+package org.example.complejidad.modelo;
 
 public class Complejidad {
 
-    private long idComplejidad;
+    private Long idComplejidad;
     private String nombreComplejidad;
     private double factorComplejidad; //<-- se calcula¡¡
 
-    public Complejidad(long idComplejidad, String nombreComplejidad, double factorComplejidad) {
+    public Complejidad(Long idComplejidad, String nombreComplejidad, double factorComplejidad) {
         this.idComplejidad = idComplejidad;
         this.nombreComplejidad = nombreComplejidad;
         this.factorComplejidad = factorComplejidad;
     }
 
-    public long getIdComplejidad() {
+    public Long getIdComplejidad() {
         return idComplejidad;
     }
 
+    public void setIdComplejidad(Long idComplejidad) {
+        this.idComplejidad = idComplejidad;
+    }
 
     public String getNombreComplejidad() {
         return nombreComplejidad;

@@ -1,4 +1,4 @@
-package org.example.modelo;
+package org.example.costo.modelo;
 
 public class Costo {
     private long idCosto;

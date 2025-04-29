@@ -1,11 +1,14 @@
-package org.example.modelo;
+package org.example.servicio.modelo;
+
+import org.example.costo.modelo.Costo;
+import org.example.usuario.modelo.Usuario;
 
 import java.time.LocalDateTime;
 
 public class Servicio {
     private Long idServicio;
     private String nombre;
-    private char nivelServicio;
+    private String nivelServicio;
     private String prioridadServicio;
     private Costo costoServicio;
     private LocalDateTime fechaSolicitudServicio;
@@ -14,7 +17,7 @@ public class Servicio {
     private Usuario usuarioEjecutor;
     private boolean disponibilidadServicio;
 
-    public Servicio(long idServicio, String nombre, char nivelServicio, String prioridadServicio, Costo costoServicio, LocalDateTime fechaSolicitudServicio, LocalDateTime fechaFinServicio, Usuario usuarioSolicitante, Usuario usuarioEjecutor, boolean disponibilidadServicio) {
+    public Servicio(long idServicio, String nombre, String nivelServicio, String prioridadServicio, Costo costoServicio, LocalDateTime fechaSolicitudServicio, LocalDateTime fechaFinServicio, Usuario usuarioSolicitante, Usuario usuarioEjecutor, boolean disponibilidadServicio) {
         this.idServicio = idServicio;
         this.nombre = nombre;
         this.nivelServicio = nivelServicio;
@@ -39,11 +42,11 @@ public class Servicio {
         this.nombre = nombre;
     }
 
-    public char getNivelServicio() {
+    public String getNivelServicio() {
         return nivelServicio;
     }
 
-    public void setNivelServicio(char nivelServicio) {
+    public void setNivelServicio(String nivelServicio) {
         this.nivelServicio = nivelServicio;
     }
 

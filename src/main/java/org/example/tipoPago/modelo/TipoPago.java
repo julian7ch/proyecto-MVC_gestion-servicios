@@ -1,4 +1,4 @@
-package org.example.modelo;
+package org.example.tipoPago.modelo;
 
 public class TipoPago {
 

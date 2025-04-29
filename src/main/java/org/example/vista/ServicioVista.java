@@ -1,9 +1,9 @@
 package org.example.vista;
 
-import org.example.controlador.ServicioControlador;
-import org.example.modelo.Costo;
-import org.example.modelo.Servicio;
-import org.example.modelo.Usuario;
+import org.example.servicio.controlador.ServicioControlador;
+import org.example.costo.modelo.Costo;
+import org.example.servicio.modelo.Servicio;
+import org.example.usuario.modelo.Usuario;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,10 +14,10 @@ public class ServicioVista {
     private final Scanner scanner = new Scanner(System.in);
 
     public ServicioVista() {
-        crearServicioPredeterminado(101L, "Gas", 'B', "Media");
+        crearServicioPredeterminado(101L, "Gas", "B", "Media");
     }
 
-    public void crearServicioPredeterminado(Long id, String nombre, char nivel, String prioridad){
+    public void crearServicioPredeterminado(Long id, String nombre, String nivel, String prioridad){
         Servicio servicio = new Servicio(
                 id,
                 nombre,
@@ -69,7 +69,7 @@ public class ServicioVista {
         System.out.println("elija prioridad: ");
         String prioridad = scanner.nextLine();
         System.out.println("ingrese Nivel del servicio: ");
-        char nivel = scanner.next().charAt(0);
+        String nivel = scanner.nextLine();
         LocalDateTime fechaSolicitudServicio = LocalDateTime.now();
         LocalDateTime fechaFinServicio = null;
         Usuario solicitante = null;
@@ -100,7 +100,7 @@ public class ServicioVista {
     boolean removerServicio(){
         System.out.println("ingrese el servivio que desea eliminar: ");
         Long id = scanner.nextLong();
-        return servicioControlador.borrarServiceporId(id);
+        return servicioControlador.borrarServicioPorId(id);
     }
 
 

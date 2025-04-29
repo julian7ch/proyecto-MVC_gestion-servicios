@@ -1,4 +1,4 @@
-package org.example.modelo;
+package org.example.saldo.modelo;
 
 public class Saldo {
 

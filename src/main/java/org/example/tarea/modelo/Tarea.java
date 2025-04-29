@@ -1,4 +1,4 @@
-package org.example.modelo;
+package org.example.tarea.modelo;
 
 public class Tarea {
     private long idTarea;
