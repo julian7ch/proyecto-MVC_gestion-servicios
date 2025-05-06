@@ -1,9 +1,9 @@
 package org.example.complejidad.servicio;
 
+import org.example.categoria.modelo.Categoria;
 import org.example.complejidad.dao.ComplejidadDAO;
 import org.example.complejidad.dao.ComplejidadDAOImpl;
 import org.example.complejidad.modelo.Complejidad;
-import org.example.tarea.modelo.Tarea;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class ComplejidadServicioImpl implements ComplejidadServicio {
     private final ComplejidadDAO complejidadDAO = new ComplejidadDAOImpl();
 
     @Override
-    public double definirComplejidad(Tarea tarea) {
+    public double definirComplejidad(Categoria categoria) {
         return 0;
     }
 

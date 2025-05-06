@@ -13,8 +13,7 @@ public class Usuario {
     private String password;
     private LocalDateTime ultimoLogin;
 
-    public Usuario(Long idUsuario, String nombreUsuario, char tipoDocumentoUsuario, Integer numeroDocumentoUsuario, LocalDateTime fechaNacimiento, char genero, String emailUsuario, String password, LocalDateTime ultimoLogin) {
-        this.idUsuario = idUsuario;
+    public Usuario( String nombreUsuario, char tipoDocumentoUsuario, Integer numeroDocumentoUsuario, LocalDateTime fechaNacimiento, char genero, String emailUsuario, String password, LocalDateTime ultimoLogin) {
         this.nombreUsuario = nombreUsuario;
         this.tipoDocumentoUsuario = tipoDocumentoUsuario;
         this.numeroDocumentoUsuario = numeroDocumentoUsuario;
@@ -23,6 +22,10 @@ public class Usuario {
         this.emailUsuario = emailUsuario;
         this.password = password;
         this.ultimoLogin = ultimoLogin;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Long getIdUsuario() {

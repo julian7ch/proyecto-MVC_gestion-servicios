@@ -1,75 +1,128 @@
 package org.example.tarea.modelo;
 
-public class Tarea {
-    private long idTarea;
-    private String nombreTarea;
-    private String descripcionTarea;
-    private String tipoTarea;
-    private char nivelTarea;
-    private boolean tareaDispnible;
+import org.example.costo.modelo.Costo;
+import org.example.usuario.modelo.Usuario;
 
-    public Tarea(long idTarea, String nombreTarea, String descripcionTarea, String tipoTarea, char nivelTarea, boolean tareaDispnible) {
-        this.idTarea = idTarea;
-        this.nombreTarea = nombreTarea;
-        this.descripcionTarea = descripcionTarea;
-        this.tipoTarea = tipoTarea;
+import java.time.LocalDateTime;
+
+public class Tarea {
+    private Long idTarea;
+    private String nombre;
+    private String nivelTarea;
+    private String prioridadTarea;
+    private Costo costoTarea;
+    private LocalDateTime fechaSolicitudTarea;
+    private LocalDateTime fechaFinTarea;
+    private Usuario usuarioSolicitante;
+    private Usuario usuarioEjecutor;
+    private boolean disponibilidadTarea;
+
+    public Tarea(String nombre, String nivelTarea, String prioridadTarea, Costo costoTarea, LocalDateTime fechaSolicitudTarea, LocalDateTime fechaFinTarea, Usuario usuarioSolicitante, Usuario usuarioEjecutor, boolean disponibilidadTarea) {
+        //this.idTarea = idTarea;
+        this.nombre = nombre;
         this.nivelTarea = nivelTarea;
-        this.tareaDispnible = tareaDispnible;
+        this.prioridadTarea = prioridadTarea;
+        this.costoTarea = costoTarea;
+        this.fechaSolicitudTarea = fechaSolicitudTarea;
+        this.fechaFinTarea = fechaFinTarea;
+        this.usuarioSolicitante = usuarioSolicitante;
+        this.usuarioEjecutor = usuarioEjecutor;
+        this.disponibilidadTarea = disponibilidadTarea;
     }
 
-    public long getIdTarea() {
+    public Long getIdTarea() {
         return idTarea;
     }
 
-    public String getNombreTarea() {
-        return nombreTarea;
+    public void setIdTarea(Long idTarea) {
+        this.idTarea = idTarea;
     }
 
-    public void setNombreTarea(String nombreTarea) {
-        this.nombreTarea = nombreTarea;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getDescripcionTarea() {
-        return descripcionTarea;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setDescripcionTarea(String descripcionTarea) {
-        this.descripcionTarea = descripcionTarea;
-    }
-
-    public String getTipoTarea() {
-        return tipoTarea;
-    }
-
-    public void setTipoTarea(String tipoTarea) {
-        this.tipoTarea = tipoTarea;
-    }
-
-    public char getNivelTarea() {
+    public String getNivelTarea() {
         return nivelTarea;
     }
 
-    public void setNivelTarea(char nivelTarea) {
+    public void setNivelTarea(String nivelTarea) {
         this.nivelTarea = nivelTarea;
     }
 
-    public boolean isTareaDispnible() {
-        return tareaDispnible;
+    public String getPrioridadTarea() {
+        return prioridadTarea;
     }
 
-    public void setTareaDispnible(boolean tareaDispnible) {
-        this.tareaDispnible = tareaDispnible;
+    public void setPrioridadTarea(String prioridadTarea) {
+        this.prioridadTarea = prioridadTarea;
+    }
+
+    public Costo getCostoTarea() {
+        return costoTarea;
+    }
+
+    public void setCostoTarea(Costo costoTarea) {
+        this.costoTarea = costoTarea;
+    }
+
+    public LocalDateTime getFechaSolicitudTarea() {
+        return fechaSolicitudTarea;
+    }
+
+    public void setFechaSolicitudTarea(LocalDateTime fechaSolicitudTarea) {
+        this.fechaSolicitudTarea = fechaSolicitudTarea;
+    }
+
+    public LocalDateTime getFechaFinTarea() {
+        return fechaFinTarea;
+    }
+
+    public void setFechaFinTarea(LocalDateTime fechaFinTarea) {
+        this.fechaFinTarea = fechaFinTarea;
+    }
+
+    public Usuario getUsuarioSolicitante() {
+        return usuarioSolicitante;
+    }
+
+    public void setUsuarioSolicitante(Usuario usuarioSolicitante) {
+        this.usuarioSolicitante = usuarioSolicitante;
+    }
+
+    public Usuario getUsuarioEjecutor() {
+        return usuarioEjecutor;
+    }
+
+    public void setUsuarioEjecutor(Usuario usuarioEjecutor) {
+        this.usuarioEjecutor = usuarioEjecutor;
+    }
+
+    public boolean isDisponibilidadTarea() {
+        return disponibilidadTarea;
+    }
+
+    public void setDisponibilidadTarea(boolean disponibilidadTarea) {
+        this.disponibilidadTarea = disponibilidadTarea;
     }
 
     @Override
     public String toString() {
         return "Tarea{" +
                 "idTarea=" + idTarea +
-                ", nombreTarea='" + nombreTarea + '\'' +
-                ", descripcionTarea='" + descripcionTarea + '\'' +
-                ", tipoTarea='" + tipoTarea + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", nivelTarea=" + nivelTarea +
-                ", tareaDispnible=" + tareaDispnible +
+                ", prioridadTarea='" + prioridadTarea + '\'' +
+                ", costoTarea=" + costoTarea +
+                ", fechaSolicitudTarea=" + fechaSolicitudTarea +
+                ", fechaFinTarea=" + fechaFinTarea +
+                ", usuarioSolicitante=" + usuarioSolicitante +
+                ", usuarioEjecutor=" + usuarioEjecutor +
+                ", disponibilidadTarea=" + disponibilidadTarea +
                 '}';
     }
 }

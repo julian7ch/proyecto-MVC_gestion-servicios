@@ -5,14 +5,15 @@ import org.example.usuario.modelo.Usuario;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class UsuarioDAOImpl implements UsuarioDAO{
     private final List<Usuario> listaUsuarios = new ArrayList<>();
+    private static AtomicLong contadorId = new AtomicLong(1);
 
     public UsuarioDAOImpl() {
         // Cargar usuarios de prueba
-        listaUsuarios.add(new Usuario(
-                1L,
+        Usuario usuario1 = new Usuario(
                 "Juan Pérez",
                 'C',
                 12345678,
@@ -21,10 +22,9 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                 "juan.perez@example.com",
                 "password123",
                 LocalDateTime.now()
-        ));
+        );
 
-        listaUsuarios.add(new Usuario(
-                2L,
+        Usuario usuario2 = new Usuario(
                 "María Gómez",
                 'P',
                 87654321,
@@ -33,7 +33,12 @@ public class UsuarioDAOImpl implements UsuarioDAO{
                 "maria.gomez@example.com",
                 "securepass456",
                 LocalDateTime.now()
-        ));
+        );
+        usuario1.setIdUsuario(contadorId.getAndIncrement());
+        usuario2.setIdUsuario(contadorId.getAndIncrement());
+
+        listaUsuarios.add(usuario1);
+        listaUsuarios.add(usuario2);
     }
     @Override
     public Usuario guardar(Usuario usuario) {
@@ -53,7 +58,8 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
     @Override
     public List<Usuario> obtenerTodos() {
-        return new ArrayList<>(listaUsuarios);
+        System.out.println(listaUsuarios);
+        return listaUsuarios;
     }
 
     @Override

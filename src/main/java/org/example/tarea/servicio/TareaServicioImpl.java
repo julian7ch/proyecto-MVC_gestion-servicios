@@ -1,44 +1,48 @@
 package org.example.tarea.servicio;
 
+import org.example.tarea.dao.TareaDAO;
 import org.example.tarea.dao.TareaDAOImpl;
 import org.example.tarea.modelo.Tarea;
 
+import java.util.Date;
 import java.util.List;
 
-public class TareaServicioImpl implements TareaServicio{
-    private final TareaDAOImpl tareaDAO;
-
-    public TareaServicioImpl(TareaDAOImpl tareaDAO) {
-        this.tareaDAO = tareaDAO;
-    }
+public class TareaServicioImpl implements TareaServicio {
+    private final TareaDAO tareaDAO = new TareaDAOImpl();
 
     @Override
-    public Tarea guardarTareaCapaServicio(Tarea tarea) {
+    public Tarea crearServicio(Tarea tarea) {
         return tareaDAO.guardar(tarea);
     }
 
     @Override
-    public Tarea buscarTareaPorIdCapaServicio(long idTarea) {
-        return tareaDAO.buscarPorId(idTarea);
+    public Tarea obtenerPorId(Long id) {
+        return tareaDAO.obtenerPorId(id);
     }
 
     @Override
-    public List<Tarea> obtenerTodasLasTareasCapaServicio() {
-        return tareaDAO.consultarTodasLasTareas();
+    public List<Tarea> obtenerTodos() {
+        return tareaDAO.obtenerTodos();
     }
 
     @Override
-    public Tarea actualizarTareaCapaServicio(Tarea tarea) {
-        return tareaDAO.actualizar(tarea);
+    public boolean eliminar(Long id) {
+        return tareaDAO.eliminar(id);
+    }
+
+
+    @Override
+    public String marcarCompletado(Date date) {
+        return null;
     }
 
     @Override
-    public boolean eliminarTareaCapaServicio(long idTarea) {
-        return tareaDAO.eliminar(idTarea);
+    public double obtenerCosto() {
+        return 0;
     }
 
     @Override
-    public boolean habilitarTareaCapaServicio(long idTarea) {
-        return tareaDAO.habilitarTarea(idTarea);
+    public Tarea resumenServicio(Tarea tarea) {
+        return null;
     }
 }

@@ -2,45 +2,43 @@ package org.example.tarea.dao;
 
 import org.example.tarea.modelo.Tarea;
 
-import java.util.List;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class TareaDAOImpl implements TareaDAO {
 
-    private final List<Tarea> tareas = new ArrayList<>();
+    private static List<Tarea> listaTareas = new ArrayList<>();
+    private static AtomicLong contadorId = new AtomicLong(1);
+    
+    static {
+        Tarea s1 = new Tarea("Tarea 1", "Alto", "Alta", null,
+                LocalDateTime.now(), LocalDateTime.now().plusDays(5), null, null, true);
+        s1.setIdTarea(contadorId.getAndIncrement());
 
-    public TareaDAOImpl() {
-        tareas.add(new Tarea(1L, "Tarea 1", "Entrega Objeto", "Tipo A", '1', true));
-        tareas.add(new Tarea(2L, "Tarea 2", "Llevar persona", "Tipo B", '2', false));
-        tareas.add(new Tarea(3L, "Tarea 3", "Mantenimiento de equipo", "Tipo C", '1', true));
+        Tarea s2 = new Tarea("Tarea 2", "Medio", "Normal", null,
+                LocalDateTime.now(), LocalDateTime.now().plusDays(10), null, null, false);
+        s2.setIdTarea(contadorId.getAndIncrement());
+
+        listaTareas.add(s1);
+        listaTareas.add(s2);
     }
 
     @Override
     public Tarea guardar(Tarea tarea) {
-        tareas.add(tarea);
+        if (tarea.getIdTarea() == null) {
+            tarea.setIdTarea(contadorId.getAndIncrement());
+        }
+        listaTareas.add(tarea);
         return tarea;
     }
 
     @Override
-    public Tarea buscarPorId(long idTarea) {
-        return tareas.stream()
-                .filter(t -> t.getIdTarea() == idTarea)
-                .findFirst()
-                .orElse(null);
-    }
-
-    @Override
-    public List<Tarea> consultarTodasLasTareas() {
-        return new ArrayList<>(tareas);
-    }
-
-    @Override
-    public Tarea actualizar(Tarea tarea) {
-        for (int i = 0; i < tareas.size(); i++) {
-            if (tareas.get(i).getIdTarea() == tarea.getIdTarea()) {
-                tareas.set(i, tarea);
+    public Tarea obtenerPorId(Long id) {
+        for (Tarea tarea : listaTareas) {
+            if (tarea.getIdTarea().equals(id)) {
+                System.out.println(tarea);
                 return tarea;
             }
         }
@@ -48,18 +46,13 @@ public class TareaDAOImpl implements TareaDAO {
     }
 
     @Override
-    public boolean eliminar(long idTarea) {
-        return tareas.removeIf(t -> t.getIdTarea() == idTarea);
+    public List<Tarea> obtenerTodos() {
+        System.out.println(listaTareas);
+        return listaTareas;
     }
 
     @Override
-    public boolean habilitarTarea(long idTarea) {
-        for (Tarea tarea : tareas) {
-            if (tarea.getIdTarea() == idTarea) {
-                tarea.setTareaDispnible(true);
-                return true;
-            }
-        }
-        return false;
+    public boolean eliminar(Long id) {
+        return listaTareas.removeIf(Tarea -> Tarea.getIdTarea().equals(id));
     }
 }

@@ -1,22 +1,18 @@
 package org.example.usuario.servicio;
 
-import org.example.servicio.modelo.Servicio;
+import org.example.tarea.modelo.Tarea;
 import org.example.usuario.dao.UsuarioDAO;
+import org.example.usuario.dao.UsuarioDAOImpl;
 import org.example.usuario.modelo.Usuario;
 
-import java.util.Date;
 import java.util.List;
 
 public class UsuarioServicioImpl implements UsuarioServicio{
 
-        private final UsuarioDAO usuarioDAO;
+    private final UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
 
-        public UsuarioServicioImpl(UsuarioDAO usuarioDAO) {
-            this.usuarioDAO = usuarioDAO;
-        }
-
-        @Override
-        public Usuario guardarUsuario(Usuario usuario) {
+    @Override
+        public Usuario crearUsuario(Usuario usuario) {
             return usuarioDAO.guardar(usuario);
         }
 
@@ -36,14 +32,14 @@ public class UsuarioServicioImpl implements UsuarioServicio{
         }
 
         @Override
-        public Usuario ofrecerServicio(Servicio servicio, Usuario usuario) {
-            //usuario.setServicioOfrecido(servicio);
+        public Usuario ofrecerServicio(Tarea tarea, Usuario usuario) {
+            //usuario.setServicioOfrecido(tarea);
             return usuarioDAO.guardar(usuario);
         }
 
         @Override
-        public Usuario solicitarServicio(Servicio servicio, Usuario usuario) {
-            //usuario.setServicioSolicitado(servicio);
+        public Usuario solicitarServicio(Tarea tarea, Usuario usuario) {
+            //usuario.setServicioSolicitado(tarea);
             return usuarioDAO.guardar(usuario);
         }
 

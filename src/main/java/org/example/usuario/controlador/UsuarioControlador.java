@@ -3,7 +3,6 @@ package org.example.usuario.controlador;
 import org.example.usuario.modelo.Usuario;
 import org.example.usuario.servicio.UsuarioServicio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioControlador {
@@ -15,7 +14,7 @@ public class UsuarioControlador {
     }
 
     public String crearUsuario(Usuario usuario) {
-        usuarioServicio.guardarUsuario(usuario);
+        usuarioServicio.crearUsuario(usuario);
         return "Usuario creado con éxito.";
     }
 
